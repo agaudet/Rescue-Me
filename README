@@ -1,0 +1,32 @@
+Copying repository jasimmons/Rescue-Me into local directory:
+------------------------------------------------------------
+In Git Bash, type:
+git clone git@github.com:jasimmons/Rescue-Me.git
+
+This will create a duplicate of all files from the repository in a folder on your computer called "Rescue-Me".
+
+
+
+Pulling updates from the repository:
+-----------------------------------------------------------
+git pull
+
+
+
+Pushing your updates to the repository:
+-----------------------------------------------------------
+git add .
+
+This adds all of your local changes to the commit landing zone.
+
+git status -s
+
+You should see all green. This ensures your files were all added properly.
+
+git commit -m 'message here'
+
+Type in a message that describes the commit you are about to make
+
+git push
+
+You're done!
