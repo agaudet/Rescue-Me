@@ -11,7 +11,6 @@ local scaleY = H/320
 print("screen: " .. W .. " x " .. H)
 print("scale: " .. scaleX .. ", " .. scaleY)
 
-
 local background = Bitmap.new(Texture.new("grass.png"))
 background:setScale(scaleX,scaleY)
 stage:addChild(background)
@@ -26,6 +25,7 @@ wallet:setPosition(10,10)
 
 local widgets = Widgets.new()
 widgets:setScale(scaleX*2,scaleY*2)
+stage:addChild(widgets)
 widgets:newWidget("animal")
 widgets:newWidget("shop")
 widgets:newWidget("minigames")
@@ -40,15 +40,14 @@ widgets.settingsWidget.view:setPosition(9*W/10-w/2,H-widgets.settingsWidget.heig
 
 local scrollableGroup = Sprite.new()
 scrollableGroup.minX = -200
-scrollableGroup.maxX = W-200
+scrollableGroup.maxX = 200
 scrollableGroup.minY = -200
-scrollableGroup.maxY = H-200
-scrollableGroup:addChild(background)
+scrollableGroup.maxY = 200
 scrollableGroup:addChild(dog)
 stage:addChild(scrollableGroup)
-stage:addChild(widgets)
 
 local function touchToScrollBegin(event)
+	print("begin")
 	local x,y = scrollableGroup:getPosition()
 	scrollableGroup.x0 = event.touches[1].x-x
 	scrollableGroup.y0 = event.touches[1].y-y
@@ -57,6 +56,7 @@ end
 local function touchToScrollMove(event)
 	scrollableGroup:setPosition(event.touches[1].x-scrollableGroup.x0,event.touches[1].y-scrollableGroup.y0)
 	local x,y = scrollableGroup:getPosition()
+	print(x, y)
 	if x < scrollableGroup.minX then
 		scrollableGroup:setPosition(scrollableGroup.minX,y)
 	elseif x > scrollableGroup.maxX then
